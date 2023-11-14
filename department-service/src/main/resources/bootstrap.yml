@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8889
+      enabled: false
+encrypt:
+  key: secretkey
+
+logging:
+  level:
+    org.springframework.cloud.netflix.eureka: DEBUG

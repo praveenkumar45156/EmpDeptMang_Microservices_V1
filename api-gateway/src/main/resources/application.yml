@@ -1,0 +1,26 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: department-service-addEmp
+        uri: lb://department-service
+        predicates:
+        - Path=/dept/**
+        - Method=GET,POST
+#      - id: department-service-getAllEmp
+#        uri: lb://department-service
+#        predicates:
+#        - Path=/dept/allEmp/{deptName}
+#        - Method=GET
+      - id: employee-service-route
+        uri: lb://employee-service
+        predicates:
+        - Path=/emp/**
+        - Method=GET,POST
+  application:
+    name: api-gateway
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
